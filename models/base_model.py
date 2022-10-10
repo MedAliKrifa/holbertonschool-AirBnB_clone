@@ -26,10 +26,11 @@ class BaseModel():
 
     def to_dict(self):
         """"returns a dictionary containing all keys/values"""
-        self.__dict__['__class__'] = self.__class__.__name__
-        self.__dict__['created_at'] = self.created_at.isoformat()
-        self.__dict__['id'] = str(uuid4())
-        self.__dict__['created_at'] = self.created_at.isoformat()
+        dict = self.__dict__.copy()
+        dict['__class__'] = self.__class__.__name__
+        dict['created_at'] = self.created_at.isoformat()
+        dict['updated_at'] = self.updated_at.isoformat()
+
         
 
-        return self.__dict__
+        return dict
