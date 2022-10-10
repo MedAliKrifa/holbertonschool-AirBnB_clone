@@ -30,3 +30,6 @@ class BaseModel():
         self.__dict__['created_at'] = self.created_at.isoformat()
         self.__dict__['id'] = str(uuid4())
         self.__dict__['created_at'] = self.created_at.isoformat()
+        
+
+        return self.__dict__
