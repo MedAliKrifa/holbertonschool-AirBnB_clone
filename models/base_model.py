@@ -20,7 +20,7 @@ class BaseModel():
                 elif i == "updated_at":
 
                     self.updated_at = datetime.strptime(kwargs[i], '%Y-%m-%dT%H:%M:%S.%f').date()
-                else:
+                elif i == "id":
                     self.id = str(kwargs[i])
         
             
