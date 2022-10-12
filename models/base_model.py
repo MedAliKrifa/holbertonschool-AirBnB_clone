@@ -3,13 +3,16 @@
 
 from datetime import datetime
 from uuid import uuid4
-
+import models
 
 class BaseModel():
     ''''base class'''
 
     def __init__(self, *args, **kwargs):
         """"initialization"""
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
         if (kwargs):
             for i in kwargs:
                 if i == "created_at":
@@ -19,10 +22,8 @@ class BaseModel():
                     self.updated_at = datetime.strptime(kwargs[i], '%m-%d-%Y').date()
                 else:
                     self.id = kwargs[i]
-        else:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+        
+            
 
     def __str__(self):
         """"print"""
