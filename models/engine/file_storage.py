@@ -37,7 +37,7 @@ class FileStorage:
         """deserializes the JSON file to __objects"""
 
         with open(self.__file_path, "w", encoding="UTF-8") as f:
-            obj = json.dump(f)
+            obj = json.load(f)
 
         for i in obj:
             class_name = i.split('.')[0]
