@@ -5,7 +5,7 @@ from ast import Pass
 from models.base_model import BaseModel
 import json
 import os.path
-
+from os.path import exists
 
 
 class FileStorage:
@@ -37,11 +37,10 @@ class FileStorage:
     def reload(self):
         """deserializes the JSON file to __objects"""
 
-        try:
+        if exists(self.__file_path):
             with open(self.__file_path, "r", encoding="UTF-8") as f:
                 obj = json.load(f.read())
 
             for key, v in obj.items():
                 self.__objects[key] = eval(v['__class__'])(**v)
-        except FileNotFoundError:
-            pass
+                pass
