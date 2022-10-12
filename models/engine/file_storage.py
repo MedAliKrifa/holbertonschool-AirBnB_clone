@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """"file storage class"""
 
+from ast import Pass
 from models.base_model import BaseModel
 import json
 import os.path
@@ -36,9 +37,12 @@ class FileStorage:
     def reload(self):
         """deserializes the JSON file to __objects"""
 
-        with open(self.__file_path, "w", encoding="UTF-8") as f:
-            obj = json.load(f)
+        try:
+            with open(self.__file_path, "r", encoding="UTF-8") as f:
+                obj = json.load(f)
 
-        for i in obj:
-            class_name = i.split('.')[0]
-            self.__objects[i] = eval(class_name)(**obj[i])
+            for i in obj:
+                class_name = i.split('.')[0]
+                self.__objects[i] = eval(class_name)(**obj[i])
+        except FileNotFoundError:
+            pass
