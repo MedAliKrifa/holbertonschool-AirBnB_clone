@@ -21,7 +21,7 @@ class BaseModel():
 
                     self.updated_at = datetime.strptime(kwargs[i], '%Y-%m-%dT%H:%M:%S.%f').date()
                 else:
-                    self.id = kwargs[i]
+                    self.id = str(kwargs[i])
         
             
 
