@@ -16,10 +16,10 @@ class BaseModel():
         if (kwargs):
             for i in kwargs:
                 if i == "created_at":
-                    self.created_at = datetime.strptime(kwargs[i], '%m-%d-%Y').date()
+                    self.created_at = datetime.strptime(kwargs[i], '%Y-%m-%dT%H:%M:%S.%f').date()
                 elif i == "updated_at":
 
-                    self.updated_at = datetime.strptime(kwargs[i], '%m-%d-%Y').date()
+                    self.updated_at = datetime.strptime(kwargs[i], '%Y-%m-%dT%H:%M:%S.%f').date()
                 else:
                     self.id = kwargs[i]
         
