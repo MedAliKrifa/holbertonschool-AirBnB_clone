@@ -23,7 +23,7 @@ class BaseModel():
                     self.updated_at = datetime.strptime(kwargs[i], '%Y-%m-%dT%H:%M:%S.%f').date()
                 elif i == "id":
                     self.id = str(kwargs[i])
-        models.storage.new
+        models.storage.new(self)
             
 
     def __str__(self):
@@ -33,7 +33,7 @@ class BaseModel():
 
     def save(self):
         ''''updates the public instance attribute'''
-        models.storage.save
+        models.storage.save(self)
         self.updated_at = datetime.now()
 
     def to_dict(self):
