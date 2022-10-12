@@ -2,6 +2,7 @@
 """"base model"""
 
 from datetime import datetime
+from pyexpat import model
 from uuid import uuid4
 import models
 
@@ -22,7 +23,7 @@ class BaseModel():
                     self.updated_at = datetime.strptime(kwargs[i], '%Y-%m-%dT%H:%M:%S.%f').date()
                 elif i == "id":
                     self.id = str(kwargs[i])
-        
+        models.storage.new
             
 
     def __str__(self):
@@ -32,6 +33,7 @@ class BaseModel():
 
     def save(self):
         ''''updates the public instance attribute'''
+        models.storage.save
         self.updated_at = datetime.now()
 
     def to_dict(self):
