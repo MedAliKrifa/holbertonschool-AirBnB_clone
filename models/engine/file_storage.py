@@ -3,8 +3,8 @@
 
 from models.base_model import BaseModel
 import json
-import models
-from . import storage
+import os.path
+
 
 
 class FileStorage:
