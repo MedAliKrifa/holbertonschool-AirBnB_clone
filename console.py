@@ -105,10 +105,9 @@ class HBNBCommand(cmd.Cmd):
             return
         objs = models.storage.all()
         arg = arg[0] +'.' + arg[1]
-        if (objs[arg]):
+        if (arg in objs):
             del objs[arg]
             storage.save()
-            print(storage.all())
         
     def do_all(self, arg):
         arg = arg.split()
@@ -117,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             l=[]
-            for i in models.storage.all().values:
+            for i in storage.all().items:
                 if len(arg) > 0 and arg[0] == i.__class__.__name__:
                     l.append(i.__str__())
                 elif len(arg) == 0:
