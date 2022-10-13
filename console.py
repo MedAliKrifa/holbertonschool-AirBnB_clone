@@ -88,6 +88,7 @@ class HBNBCommand(cmd.Cmd):
         arg = arg[0] +'.' + arg[1]
         if (arg in objs):
             print(objs[arg])
+            return
         else:
             print("** no instance found **")
             return
