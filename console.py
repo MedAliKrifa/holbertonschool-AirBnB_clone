@@ -103,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
             return
         
         if (len(arg) < 2):
-            print('**instance id missing**')
+            print('**instance id missing **')
             return
         objs = storage.all()
         arg = arg[0] +'.' + arg[1]
