@@ -142,14 +142,14 @@ class HBNBCommand(cmd.Cmd):
             return
         
         if (len(args) == 1):
-            print('**instance id missing**')
+            print('** instance id missing **')
             return
 
         if (len(args) == 2):
-            print('**attribute name missing**')
+            print('** attribute name missing **')
             return
         if (len(args) == 3):
-            print('**value missing**')
+            print('** value missing **')
             return
         if (len(args) > 4):
             return
