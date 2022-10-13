@@ -3,9 +3,10 @@
 
 from ast import Pass
 from models.base_model import BaseModel
-import json
+import json 
 import os.path
 from os.path import exists
+from json import dumps,loads
 
 
 class FileStorage:
@@ -38,9 +39,9 @@ class FileStorage:
 
         try:
             with open(self.__file_path, "r", encoding="UTF-8") as f:
-                obj = json.load(f)
+                obj = loads(f.read())
             for k, v in obj.items():
                 class_name = k.split('.')[0]
                 self.__objects[k] = eval(class_name)(**v)
-        except:
+        except BaseException:
             pass
