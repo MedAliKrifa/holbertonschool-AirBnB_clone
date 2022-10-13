@@ -2,7 +2,7 @@
 """"file storage class"""
 
 from models.base_model import BaseModel
-from json import dumps,loads
+from json import dumps, loads
 
 
 class FileStorage:
@@ -14,7 +14,6 @@ class FileStorage:
     def all(self):
         """"returns the dictionary __objects"""
         return self.__objects
-
 
     def new(self, obj):
         """
@@ -29,11 +28,10 @@ class FileStorage:
 
         dic = {}
 
-        for i,v in self.__objects.items():
+        for i, v in self.__objects.items():
             dic[i] = v.to_dict()
         with open(self.__file_path, 'w', encoding="UTF-8") as f:
             f.write(dumps(dic))
-
 
     def reload(self):
         """
