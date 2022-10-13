@@ -138,14 +138,14 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         
-        if (len(arg) < 2):
+        if (len(arg) == 1):
             print('**instance id missing**')
             return
 
     
         objs = models.storage.all()
         inst = arg[0] +'.' + arg[1]
-        if (objs[inst]):
+        if (inst in objs):
             print(objs[inst])
         else:
             print("** no instance found **")
