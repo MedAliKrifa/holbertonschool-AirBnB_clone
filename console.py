@@ -3,6 +3,7 @@
 
 
 import cmd
+from curses import keyname
 from multiprocessing.sharedctypes import Value
 import models
 from models.base_model import BaseModel
@@ -110,18 +111,21 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
         
     def do_all(self, arg):
+        """"print all"""
         arg = arg.split()
-        if (arg[0] not in classes):
-            print("** class doesn't exist **")
-            return
+        obj = storage.all()
+        lisst= []
+        if arg:
+            if arg[0] not in classes:
+                print("** class doesn't exist **")
+                return
+            for k,v in obj.items():
+                if arg[0] in k:
+                    lisst.append(obj[k].__str__())
         else:
-            l=[]
-            for i in storage.all().items:
-                if len(arg) > 0 and arg[0] == i.__class__.__name__:
-                    l.append(i.__str__())
-                elif len(arg) == 0:
-                    l.append(i.__str__())
-            print(l)
+            for k,v in obj.items():
+                lisst.append(obj[k].__str__())
+        print(lisst)
 
 
     
