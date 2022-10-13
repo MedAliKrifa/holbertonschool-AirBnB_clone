@@ -84,9 +84,9 @@ class HBNBCommand(cmd.Cmd):
             return
 
     
-        objs = storage.all()
+        objs = models.storage.all()
         arg = arg[0] +'.' + arg[1]
-        if (objs[arg]):
+        if (arg in objs):
             print(objs[arg])
         else:
             print("** no instance found **")
@@ -105,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
         if (len(arg) < 2):
             print('** instance id missing **')
             return
-        objs = storage.all()
+        objs = models.storage.all()
         arg = arg[0] +'.' + arg[1]
         if (objs[arg]):
             del objs[arg]
@@ -119,7 +119,7 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             l=[]
-            for i in storage.all().values:
+            for i in models.storage.all().values:
                 if len(arg) > 0 and arg[0] == i.__class__.__name__:
                     l.append(i.__str__())
                 elif len(arg) == 0:
@@ -145,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
     
-        objs = storage.all()
+        objs = models.storage.all()
         inst = arg[0] +'.' + arg[1]
         if (objs[inst]):
             print(objs[inst])
