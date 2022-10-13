@@ -41,5 +41,7 @@ class FileStorage:
                 obj = json.load(f)
 
             for key, v in obj.items():
+                class_name = key.split('.')[0]
                 self.__objects[key] = eval(v['__class__'])(**v)
-                
+        else:
+            pass
