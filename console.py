@@ -132,29 +132,48 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """"Updates an instance based on the class name and id by adding
         or updating attribute (save the change into the JSON file)."""
-        arg = arg.split()
+        args = arg.split(" ")
         if len(arg) == 0:
             print ('** class name missing **')
             return
         
-        if (arg[0] not in classes):
+        if (args[0] not in classes):
             print("** class doesn't exist **")
             return
         
-        if (len(arg) == 1):
+        if (len(args) == 1):
             print('**instance id missing**')
             return
 
-    
-        objs = models.storage.all()
-        inst = arg[0] +'.' + arg[1]
+        if (len(args) == 2):
+            print('**attribute name missing**')
+            return
+        if (len(args) == 3):
+            print('**value missing**')
+            return
+        if (len(args) > 4):
+            return
+        else:
+            obj = "{}.{}".format(args[0], args[1])
+            all_obj = storage.all()
+            update_item = False
+            for k, v in all_obj.items():
+                if obj == k:
+                    update_item = True
+                    setattr(all_obj[obj], args[2], args[3])
+            if update_item:
+                storage.save()
+            else:
+                print(" no instance found ")                                    
+        """objs = models.storage.all()
+        inst = args[0] +'.' + args[1]
         if (inst in objs):
             print(objs[inst])
         else:
             print("** no instance found **")
             return
         
-        if len(arg) < 3:
+        if len(args) < 3:
             print("** attribute name missing **")
             return
         
@@ -170,9 +189,8 @@ class HBNBCommand(cmd.Cmd):
         except:
             setattr(objs[inst], attribute, attribute_value[1])
 
-        storage.save()
+        storage.save()"""
 
-    
 
 
 
