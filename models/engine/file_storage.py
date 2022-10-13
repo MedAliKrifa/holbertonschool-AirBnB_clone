@@ -29,18 +29,18 @@ class FileStorage:
         dic = {}
 
         for i in self.__objects:
-            dic = i
-            dic[i] = self.__objects[i]
+            dic[i] = self.__objects[i].to_dict()
         with open(self.__file_path, "w", encoding="UTF-8") as f:
             json.dump(dic, f)
 
     def reload(self):
         """deserializes the JSON file to __objects"""
 
-        if exists(self.__file_path):
+        try:
             with open(self.__file_path, "r", encoding="UTF-8") as f:
-                obj = json.load(f.read())
-
-            for key, v in obj.items():
-                self.__objects[key] = eval(v['__class__'])(**v)
-                pass
+                obj = json.load(f)
+            for k, v in obj.items():
+                class_name = k.split('.')[0]
+                self.__objects[k] = eval(class_name)(**v)
+        except:
+            pass
