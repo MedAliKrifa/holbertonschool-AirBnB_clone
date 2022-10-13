@@ -22,9 +22,8 @@ class HBNBCommand(cmd.Cmd):
 
         return True
 
-    def emptyline(self, arg):
+    def emptyline(self):
         """"empty like my heart"""
-
         pass
 
 
