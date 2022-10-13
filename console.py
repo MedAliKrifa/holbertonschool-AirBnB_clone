@@ -60,7 +60,8 @@ class HBNBCommand(cmd.Cmd):
         print(obj.id)
 
     def do_show(self, arg):
-        """"show the string representation of an instance based on the class name and id"""
+        """"show the string representation of an
+        instance based on the class name and id"""
 
         arg = arg.split()
         if len(arg) == 0:
@@ -164,14 +165,14 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
             return
-        
+
         if len(args) < 3:
             print("** attribute name missing **")
             return
-        
+
         attribute_value = arg.split('"')
         if len(attribute_value) == 1:
-            print("** value missing **")     
+            print("** value missing **")
             return
         attribute = arg[2]
         try:
