@@ -164,7 +164,10 @@ class HBNBCommand(cmd.Cmd):
             if update_item:
                 storage.save()
             else:
-                print(" no instance found ")                                    
+                print('** no instance found **')
+
+
+                                    
         """objs = models.storage.all()
         inst = args[0] +'.' + args[1]
         if (inst in objs):
